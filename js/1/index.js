@@ -4,16 +4,15 @@ const pathToFile = 'input.txt';
 fs.readFile(pathToFile, (err, data) => {
   if (err) { console.error(err) };
   const array = data.toString().split('\n');
-  array.pop(); //last item is newline and not valid input
+  array.pop(); //last item is empty line and not valid input
 
   handleInput(array);
 
 })
 
-const reducer = (accumulator, currentValue) => accumulator + currentValue;
+const reducer = (accumulator, currentValue) => accumulator + parseInt(currentValue);
 
 var handleInput = function(input){
-  const integers = input.map(x => parseInt(x));
-  const answer = integers.reduce(reducer);
+  const answer = input.reduce(reducer, 0);
   console.log(answer);
 }
