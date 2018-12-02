@@ -4,8 +4,7 @@ const input = reader.parseTextFileAsArray(pathToFile);
 
 const reducer = (accumulator, currentValue) => accumulator + parseInt(currentValue);
 
-var partOne = function(pathToFile){
-  console.log(input);
+var partOne = function(){
   const answer = input.reduce(reducer, 0);
   console.log(answer);
 }();
