@@ -15,11 +15,12 @@ var partOne = function(input){
   for(id in input){
     addToFabric(getBounds(input[id]));
   }
-  let total = 0;
-  for(row in fabric){
-    total += fabric[row].reduce((acc, cur) => {if(cur > 1){acc++} return acc}, 0 );
+  for(id in input){
+    if(checkFabric(getBounds(input[id]))){
+      console.log(input[id]);
+      return;
+    }
   }
-  console.log(total);
 
 }(reader.parseTextFileAsArray(pathToFile));
 
@@ -29,6 +30,15 @@ function addToFabric(rect){
       (fabric[i][j] > 0 ? fabric[i][j]++ : fabric[i][j] = 1);
     }
   }
+}
+
+function checkFabric(rect){
+  for(var i = rect.x; i < rect.x + rect.width; i++){
+    for(var j = rect.y; j < rect.y + rect.height; j++){
+      if (fabric[i][j] != 1){return false};
+    }
+  }
+  return true;
 }
 
 function getBounds(id){
