@@ -29,11 +29,10 @@ defmodule Aoc202102Test do
 
   test "day 2 part 2" do
 
-    File.stream!("./input.txt")
+    assert 1451210346 == File.stream!("./input.txt")
     |> Enum.map(&clean_and_parse_input/1)
     |> Enum.map(fn x -> String.split(x, " ") end)
     |> Aoc202102.day_2_part_2()
-    |> IO.inspect(label: "part 2")
   end
 
   defp clean_and_parse_input(num) do
